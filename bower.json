@@ -1,0 +1,23 @@
+{
+  "name": "ekcontent-js",
+  "version": "0.0.0",
+  "authors": [
+    "Eric P. Katz <ericpkatz@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5"
+  }
+}

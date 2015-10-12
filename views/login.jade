@@ -1,0 +1,12 @@
+extends layout.jade
+block content
+  h2 Login 
+  form(method='POST')
+    .form-group
+      label(for='email') Email
+      input.form-control(name='email')
+    .form-group
+      label(for='password') Password 
+      input.form-control(type='password' id='password' name='password')
+    button.btn.btn-primary(type='submit')
+      | signin

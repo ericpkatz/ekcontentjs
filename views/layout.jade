@@ -1,0 +1,26 @@
+html
+  head
+    link(href='/vendor/bootstrap/dist/css/bootstrap.css' rel='stylesheet')
+  body
+    ul.nav.nav-tabs
+      li
+        a(href='/') Home
+      if !user
+        li
+          a(href='/login') Login 
+      if user
+        li
+          a(href='/profile') Profile 
+        li
+          a(href='/logout') Logout 
+
+    .container
+      h1 ekcontent.js 
+      if error
+        .alert.alert-danger 
+          =error
+      if message 
+        .alert.alert-success
+          =message
+      block content
+

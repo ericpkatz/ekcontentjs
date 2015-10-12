@@ -1,0 +1,11 @@
+extend layout
+block content
+  h2 Profile
+  form(method='POST')
+    .form-group
+      label(for='firstName') First Name
+      input.form-control(id='firstName' name='first_name' value=user.firstName)
+    .form-group
+      label(for='lastName') Last Name
+      input.form-control(id='lastName' name='last_name', value=user.lastName)
+    button.btn.btn-primary(type='submit') Save 
