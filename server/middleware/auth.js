@@ -2,6 +2,8 @@ var router = require('express').Router();
 var passport = require('passport');
 var LocalStrategy = require('passport-local');
 var User = require('../models/index').User;
+var env = require('../env');
+
 
 passport.serializeUser(function(user, done) {
   done(null, user.id);
@@ -18,7 +20,6 @@ passport.use(new LocalStrategy(
     usernameField: 'email'
   },
   function(email, password, done) {
-    console.log('hello');
     User.findOne({ email: email }, function (err, user) {
       if (err) { return done(err); }
       if (!user) { return done(null, false); }
@@ -27,6 +28,27 @@ passport.use(new LocalStrategy(
     });
   }
 ));
+
+var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+
+passport.use(
+  new GoogleStrategy(
+    {
+      clientID: env.value('GOOGLE_CLIENT_ID'),
+      clientSecret: env.value('GOOGLE_CLIENT_SECRET'),
+      callbackURL: env.value('GOOGLE_CALLBACK_URL') 
+    },
+    function(token, tokenSecret, profile, done) {
+      User.findOrCreate({ googleId: profile.id })
+        .then(function (user) {
+          return done(null, user);
+        });
+    }
+  )
+);
+
+
+
 
 router.use(passport.initialize());
 router.use(passport.session());

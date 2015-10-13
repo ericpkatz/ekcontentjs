@@ -3,6 +3,7 @@ var chalk = require('chalk');
 var db = require('./server/db');
 var User = require('./server/models').User;
 var passport = require('passport');
+var env = require('./server/env');
 
 
 db.connect()
@@ -40,7 +41,7 @@ app.use(require('./server/routes/'));
 
 
 
-var port = process.env.PORT || 3000;
+var port = env.value('PORT');
 
 app.listen(port, function(err){
   console.log(chalk.green('happily listening on port ' + port));

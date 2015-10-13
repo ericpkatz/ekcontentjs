@@ -8,4 +8,7 @@ block content
     .form-group
       label(for='lastName') Last Name
       input.form-control(id='lastName' name='last_name', value=user.lastName)
+    .form-group
+      label Google ID 
+      input.form-control(readOnly value=user.googleId)
     button.btn.btn-primary(type='submit') Save 
